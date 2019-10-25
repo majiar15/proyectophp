@@ -19,7 +19,7 @@ class pedidosController extends AbstractController {
             Utils::deleteSession('tarjet');
             $costo = $stats['total'];
 
- 
+
             if ($departamento && $ciudad && $direccion && $metodo) {
                 //guardar datos en la DB
                 $_SESSION['metodo'] = $metodo;
@@ -80,12 +80,15 @@ class pedidosController extends AbstractController {
             if (isset($_POST['metodo']) && $_POST['metodo'] == 'pago online') {
 
                 require_once 'views/pedido/pagoOnline.php';
-            } else {
+            } else if (isset($_POST['metodo']) && $_POST['metodo'] == 'contra ') {
                 $_SESSION['metodo'] = 'contra entrega';
                 require_once 'views/pedido/hacer.php';
+            } else if (isset($_SESSION['tarjet']) && $_SESSION['tarjet'] == 'failed'){
+                require_once 'views/pedido/pagoOnline.php';
             }
 
-            if (isset($_POST['tarjeta'])) {
+
+            if (isset($_POST['tarjeta']) && isset($_POST['mes']) && isset($_POST['año']) && isset($_POST['CVV'])) {
 
 
                 $tarjeta = isset($_POST['tarjeta']) ? $_POST['tarjeta'] : false;
@@ -96,7 +99,7 @@ class pedidosController extends AbstractController {
                 $nombreTitular = isset($_POST['nombreTitular']) ? $_POST['nombreTitular'] : false;
 
                 if ($tarjeta && $mes && $año && $cvv && $nombreTitular) {
-                    if (($tarjeta[1] == '4' || $tarjeta[1] == '5' || $tarjeta[1] == '3') && is_numeric($tarjeta)) {
+                    if (($tarjeta[0] == '4' || $tarjeta[0] == '5' || $tarjeta[0] == '3') && is_numeric($tarjeta)) {
 
                         if (is_numeric($mes) && is_numeric($año) && is_numeric($cvv)) {
                             $_SESSION['metodo'] = 'pago online';
@@ -104,7 +107,6 @@ class pedidosController extends AbstractController {
                         } else {
                             $_SESSION['tarjet'] = 'failed';
                             require_once 'views/pedido/pagoOnline.php';
-                          
                         }
                     } else {
                         $_SESSION['tarjet'] = 'failed';

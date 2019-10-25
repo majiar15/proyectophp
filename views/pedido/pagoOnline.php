@@ -4,7 +4,7 @@ if(isset($_SESSION['tarjet']) && $_SESSION['tarjet'] =='failed'):
 ?>
 <span class="alert_red">error al validar su informacion</span>
 <?php endif;
- Utils::deleteSession('target');
+ Utils::deleteSession('tarjet');
 ?>
 <form action="<?=base_url?>pedidos/MetodoPago" method="post">
         <label for="tarjeta" >tarjeta</label>
