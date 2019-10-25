@@ -2,7 +2,7 @@
 
 require_once 'models/usuario.php';
 
-class usuarioController extends AbstractController{
+class usuarioController extends AbstractController {
 
     public function index() {
         echo 'controlador Usuarios, Accion index';
@@ -11,7 +11,7 @@ class usuarioController extends AbstractController{
     public function registro() {
         require_once 'views/usuario/registro.php';
     }
-    
+
     public function save() {
         if (isset($_POST)) {
             $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : FALSE;
@@ -28,15 +28,15 @@ class usuarioController extends AbstractController{
                 $save = $usuario->save();
                 if ($save) {
                     $_SESSION['register'] = "complete";
-     echo "<script> location.href='http://localhost/master-php/aprendiendophp/usuario/registro'; </script>";
+                    echo "<script> location.href='http://localhost/master-php/aprendiendophp/usuario/registro'; </script>";
                 }
             } else {
                 $_SESSION['register'] = "failed";
-     echo "<script> location.href='http://localhost/master-php/aprendiendophp/usuario/registro'; </script>";
+                echo "<script> location.href='http://localhost/master-php/aprendiendophp/usuario/registro'; </script>";
             }
         } else {
             $_SESSION['register'] = "failed";
-     echo "<script> location.href='http://localhost/master-php/aprendiendophp/usuario/registro'; </script>";
+            echo "<script> location.href='http://localhost/master-php/aprendiendophp/usuario/registro'; </script>";
         }
     }
 
@@ -71,6 +71,9 @@ class usuarioController extends AbstractController{
         }
         if (isset($_SESSION['admin'])) {
             unset($_SESSION['admin']);
+        }
+        if (isset($_SESSION['carrito'])) {
+            unset($_SESSION['carrito']);
         }
         echo "<script> location.href='http://localhost/master-php/aprendiendophp/productos/index'; </script>";
     }
