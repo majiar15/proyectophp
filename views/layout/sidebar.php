@@ -18,7 +18,12 @@
 
     <div id="login" class="block_aside">
         <?php if (!isset($_SESSION['identity'])): ?>
-            <h3>entrar a la web</h3>
+            <h3>Login</h3>
+            <?php if(isset($_SESSION['error_login']) && $_SESSION['error_login'] = 'Identificacion fallida!!'): ?>
+            <p class="alert_red">error al iniciar session</p>
+            <?php endif;
+            Utils::deleteSession("error_login");
+            ?>
             <form action="<?= base_url ?>usuario/login" method="post">
                 <label for="email"  >email</label>
                 <input type="email" name="email">

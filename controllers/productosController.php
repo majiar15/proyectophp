@@ -5,11 +5,23 @@ require_once 'models/producto.php';
 class productosController extends AbstractController {
 
     public function index() {
-        
-        $producto = new producto();
-        $productos = $producto->getRamdom(6);
+        if (isset($_POST) & isset($_POST['search'])) {
+            $search = $_POST['search'];
 
-        require_once 'views/producto/destacados.php';
+            $producto = new producto();
+            $productos = $producto->search($search);
+            require_once 'views/producto/destacados.php';
+
+
+     
+        } else {
+
+
+            $producto = new producto();
+            $productos = $producto->getRamdom(6);
+
+            require_once 'views/producto/destacados.php';
+        }
     }
 
     public function ver() {

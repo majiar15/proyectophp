@@ -2,11 +2,7 @@
 <html lang="es">
     <head> 
         <meta charset="utf-8">
-        <!--Im      <meta charset="utf-8">port Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <!--Let browser know website is optimized for mobile-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="<?= base_url ?>assets/bootstrap/css/bootstrap.css" />
         <link rel="stylesheet" href="<?= base_url ?>assets/css/style.css" />
 
         <title>cyberShop</title>
@@ -64,6 +60,14 @@
                     </li>
                     <li><a href="<?= base_url ?>categorias/ver&id=4&page=1">Laptos</a></li>
 
+                    <li> 
+                        <form action="<?=base_url?>productos/index" class="form-inline my-2 my-lg-0" style="padding: 10px; margin-left:700px;" method="post">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="submit">
+                                
+                        </form>
+                   
+                    </li>
                 </ul>        
             </nav>
 

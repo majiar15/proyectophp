@@ -134,7 +134,13 @@ class producto extends Database{
         }
         return $result;
     }
-
+    
+    public function search($search){
+        $sql = "SELECT * FROM productos WHERE nombre like '%".$search."%';";
+        $result = $this->db->query($sql);
+        return $result;
+    }
+    
     public function delete() {
         $sql = "DELETE FROM productos WHERE id = {$this->id};";
         $delete = $this->db->query($sql);

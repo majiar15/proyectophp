@@ -1,7 +1,15 @@
+<?php if(isset($_POST['search'])):?>
+
+<h1>resultados de la busqueda <?=$_POST['search']?></h1>
+
+<?php else:?>
 
 <h1>algunos de nuestros prodcutos</h1>
-<?php
-?>
+
+<?php endif;?>
+
+<?php if($productos->num_rows !=0):?>
+
 <?php while ($pro = $productos->fetch_object()): ?>
     <!--contenido --->
     <div class = "product">
@@ -15,3 +23,7 @@
     </div>
 <?php endwhile; ?>
     
+<?php else:?>
+    <h2>no hay resultados de la busqueda <?=$_POST['search']?> </h2>
+    
+<?php endif; ?>

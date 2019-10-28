@@ -71,7 +71,6 @@ class pedidosController extends AbstractController {
     }
 
     public function metodo() {
-        Utils::isIdentity();
         require_once 'views/pedido/metodo.php';
     }
 

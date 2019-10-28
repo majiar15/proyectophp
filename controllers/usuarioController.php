@@ -59,7 +59,7 @@ class usuarioController extends AbstractController {
             }
 
 
-            //crear una session
+
         }
 
         echo "<script> location.href='http://localhost/master-php/aprendiendophp/productos/index'; </script>";
